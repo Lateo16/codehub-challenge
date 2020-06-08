@@ -6,6 +6,8 @@ class ReadNews extends StatefulWidget {
   _ReadNewsState createState() => _ReadNewsState();
   final String imageUrl, articleTitle, text, publisher;
 
+  // a constructor for the detailed article page 
+  // it accepts some parameters during its initialisation
   ReadNews({Key key,@required this.imageUrl, @required this.articleTitle, @required this.text, @required this.publisher}): super(key:key);
 }
 
@@ -13,6 +15,9 @@ class _ReadNewsState extends State<ReadNews> {
  
   @override
   Widget build(BuildContext context) {
+    // initialising the screen util package to 
+    // make the interface responsive on different
+    // screen sizes
     ScreenUtil.init(
       context,
       width: MediaQuery.of(context).size.width,
@@ -35,28 +40,33 @@ class _ReadNewsState extends State<ReadNews> {
               widget.imageUrl,
               fit: BoxFit.fill,), 
            ),
-           Container(
-             
-             margin: EdgeInsets.only(left:20.0, right:20.0, top:25.0),
-             child: Column(
-               children: <Widget>[
-                 Text(
+           Column(
+             children: <Widget>[
+               Container(
+                 margin: EdgeInsets.only(left:20, right:20, top:15),
+                 child: Text(
                    widget.articleTitle,
                    style: TextStyle(fontWeight: FontWeight.bold,), ),
-                   SizedBox(height:5.0),
-                   Text(
+               ),
+                 SizedBox(height:5.0),
+                 Container(
+                   margin: EdgeInsets.only(right:248),
+                   child: Text(
                      widget.publisher,
-                     style: TextStyle(fontWeight: FontWeight.normal, fontSize: 8.0),
+                     style: TextStyle(fontWeight: FontWeight.normal, fontSize: 10.0),
                    ),
-                   SizedBox(
-                     height: 10.0,
-                   ),
-                   Text(
+                 ),
+                 SizedBox(
+                   height: 10.0,
+                 ),
+                 Container(
+                   margin: EdgeInsets.only(left:20, right:20),
+                   child: Text(
                      widget.text,
-                     style: TextStyle(fontSize: 12.0),
-                   ) 
-               ],
-             ),
+                     style: TextStyle(fontSize: 16.0),
+                   ),
+                 ) 
+             ],
            )
          ], 
         ),
