@@ -10,7 +10,7 @@ A flutter based mobile application that users can use to read articles
 
 ## app screen
 ![Image of article-reader]
-(./images/articles-list.png)
+(https://github.com/Lateo16/codehub-challenge/blob/master/images/article.png)
 
 ![Image of article-reader]
 (./images/article.png)
