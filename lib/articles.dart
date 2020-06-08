@@ -1,18 +1,25 @@
+import 'dart:convert';
+
+import 'package:apis/article.dart';
+
 class Articles {
-  final String id,url,title,text,publisher,author,image,date;
+  /*
+    Articles class defines a model that represents how the 
+    api we are reading from is defined.
+   */
+  int count;
+  List<Article> article;
 
-  Articles({this.id, this.url, this.author, this.date, this.image, this.publisher, this.text, this.title});
+  Articles.fromJson(String json) {
+    // converts the data read read from the api
+    // from json to specific data types
+    final _map = jsonDecode(json);
+    count = _map['count'];
+    article = [];
 
-  factory Articles.fromJson(Map<String, dynamic> json) {
-    return Articles(
-      id: json['id'],
-      url: json['url'],
-      author: json['author'],
-      date: json['date'],
-      image: json['image'],
-      publisher: json['publisher'],
-      text: json['text'],
-      title: json['title']
-    );
+    final _articlesList = _map['articles'];
+    for (var i=0;i< count; i++) {
+      article.add(new Article.fromJson(_articlesList[i]));
+    }
   }
 }
