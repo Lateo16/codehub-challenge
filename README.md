@@ -9,8 +9,6 @@ A flutter based mobile application that users can use to read articles
 - enter the command "flutter run" to start the application
 
 ## app screen
-![Image of article-reader]
-(https://github.com/Lateo16/codehub-challenge/blob/master/images/article.png)
+<img src='./images/articles-list.png'>
 
-![Image of article-reader]
-(./images/article.png)
+<img src='./images/article.png>
