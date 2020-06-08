@@ -1,8 +1,7 @@
 import 'package:apis/read_news.dart';
 import 'package:flutter/material.dart';
 import 'package:http/http.dart' as http;
-import 'dart:convert';
-import 'package:apis/photo.dart';
+import 'package:apis/articles.dart';
 
 
 void main() => runApp(MyApp());
@@ -16,7 +15,8 @@ class MyApp extends StatelessWidget {
       theme: ThemeData(
         primarySwatch: Colors.blue,
       ),
-      home: MyHomePage(title: 'Flutter Demo Home Page'),
+      home: MyHomePage(title: 'News'),
+      debugShowCheckedModeBanner: false,
     );
   }
 }
@@ -31,20 +31,18 @@ class MyHomePage extends StatefulWidget {
 }
 
 class _MyHomePageState extends State<MyHomePage> {
-  // List<Photo> list = List();
+  
   var isLoading = true;
-  // final list;
+  
   var list;
 
+// A function that reads articles from the api 
   _fetchData() async {
-    // setState(() {
-    //   isLoading = true;
-    // });
     final response = await http.get("https://learnappmaking.com/ex/news/articles/Apple?secret=CHWGk3OTwgObtQxGqdLvVhwji6FsYm95oe87o3ju");
     if (response.statusCode == 200 ) {
-      //  list = (jsonDecode(response.body) as List).map((data) => new Photo.fromJson(data))
+      //  list = (jsonDecode(response.body) as List).map((data) => new Articles.fromJson(data))
       //         .toList();
-      list =   new Photo.fromJson(response.body);
+      list =   new Articles.fromJson(response.body);
       setState(() {
         isLoading = false;
       });
@@ -66,7 +64,10 @@ class _MyHomePageState extends State<MyHomePage> {
       ),
       body: isLoading ? Center(
         child: CircularProgressIndicator()
-      ) :ListView.builder(
+      ) 
+      :ListView.builder(
+        // using a listview builder to display the api data we 
+        // read from
         padding: EdgeInsets.only(left: 10.0),
         itemCount: list.count,
         itemBuilder: (BuildContext context, int index) {
@@ -81,6 +82,8 @@ class _MyHomePageState extends State<MyHomePage> {
                 Icons.arrow_forward_ios
               ),
               onTap: () {
+                // navigating to a specific article detail 
+                // when the article list tile is tapped
                 Navigator.push( context, MaterialPageRoute(builder: (context) => ReadNews(
                   imageUrl: list.article[index].image, 
                   articleTitle: list.article[index].title, 
