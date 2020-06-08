@@ -9,5 +9,5 @@ A flutter based mobile application that users can use to read articles
 - enter the command "flutter run" to start the application
 
 ## app screen
-<img src="./images/articles-list.png" width="1000" height="1000">
+<img src="./images/articles-list.png">
 
